@@ -1,0 +1,84 @@
+Lucy and Tina are close friends. They both are studying in the same school. Now they are on their summer vacation. As they are bored, they ask their parents to take them to an exhibition. There Lucy and Tina play a game. In this game, there are three boxes with some number written on their top. There is a treasure in one of the three boxes and the treasure is present in the box with the second largest number on its top. Also, to open the box, they need to decode the correct code of this box. The clue given to them to find the code is that it is the largest number which divides all the three given numbers. So, now help Lucy and Tina to decode the code.
+INPUT FORMAT:
+
+Input consists of three integers. First input corresponds to the number of the first box. Second input corresponds to the number of the second box. Third input corresponds to the number of the third box.
+
+SAMPLE INPUT:
+
+2
+
+4
+
+6
+
+SAMPLE OUTPUT:
+
+The treasure is in the box which has number 4.
+
+The code to open the box is 2.
+
+SOURCE CODE-
+#include<iostream>
+using namespace std;
+int main()
+{
+  int b1, b2, b3, min, max;
+  cin >> b1 >> b2 >> b3;
+  if (b1 > b2)
+  {
+    if (b1 < b3)
+    {
+      cout << "Entering  ";
+      cout << "The treasure is in box which has number "<< b1 <<"\n";
+      min = b2;
+      max = b3;
+    }
+    else
+    {
+      if (b2 < b3)
+      {
+        cout << "The treasure is in box which has number " << b3 << "\n";
+        min = b2;
+        max = b1;
+      }
+    }
+  }
+  else
+  {
+    if (b2 < b3)
+    {
+      cout << "The treasure is in box which has number " << b2 <<"\n";
+      min = b1;
+      max = b3;
+    }
+    else
+    {
+      if (b1 < b3)
+      {
+        cout << "The treasure is in box which has number " << b3 <<"\n";
+        min = b1;
+        max = b2;
+      }
+      else
+      {
+        cout << "The treasure is in box which has number " << b1 <<"\n";
+        min = b3;
+        max = b2;
+      }
+    }
+  }
+  while(1)
+  {
+    if (min > max)
+    {
+      cout << "The code to open the box is 1";
+      break;
+    }
+    if (b1 % min == 0 && b2 % min == 0 && b3 % min == 0)
+    {
+      cout << "The code to open the box is " << min;
+      break;
+    }
+    ++min;
+  }
+}
